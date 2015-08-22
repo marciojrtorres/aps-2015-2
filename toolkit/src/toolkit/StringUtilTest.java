@@ -1,5 +1,10 @@
 package toolkit;
 
+// import static = referencia um método! (opcional)
+import static toolkit.StringUtil.reverse;
+// para evitar classificar
+import static toolkit.StringUtil.endsWith;
+
 // dependências e dependentes
 
 // StringUtilTest depende de StringUtil
@@ -74,6 +79,18 @@ public class StringUtilTest {
     System.out.println(StringUtil.reverse("aps").equals("spa"));
     // assertiva (casos excepcionais)
     System.out.println(StringUtil.reverse("").equals(""));
+    System.out.println(reverse("teste"));
+    // os marcos? sufixo/string
+    // marcos os? string/sufixo
+
+    System.out.println("testando endsWith ---------------");
+
+    System.out.println(endsWith("marcos", "os") == true);  // true
+    System.out.println(endsWith("marcos", "ma") == false); // true
+    System.out.println(endsWith("felipe", "E")  == false); // true
+    System.out.println(endsWith("felipe ", "d") == false); // true
+
+
 
   }
 
