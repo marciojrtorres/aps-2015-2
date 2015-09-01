@@ -13,15 +13,33 @@ public class Timer {
   }
   // interação/ação/comando
   public void tic() { // corrente de métodos
-    tic(1); // reutilizando uma lógica correta
+    if (this.seconds == 0) return;
+
+    // dormir 1000ms (1s)
+    try { Thread.sleep(1000); } catch(Exception e) {}
+
+    // ação a ser feita a cada tic
+    // como permitir a substituição da ação?
+    System.out.print(".");
+
+    this.seconds--;
+    // ação a ser feita quando termina o timer
+    // como permitir a substituição da ação?
+    if (this.seconds == 0) System.out.println("end");
   }
-  // sobrecarga de método (polimorfismo)
+
+  // sobrecarga de método (polimorfismo ad-hoc)
   public void tic(int s) {
-    if (s > this.seconds) {
-      this.seconds = 0;
-    } else {
-      this.seconds -= s; // this.seconds = this.seconds - s;
-    }
+    for (; s > 0; s--) tic();
+  }
+
+  public boolean zero() { // consulta
+    return this.seconds == 0;
+  }
+  // um dos problemas de projetar sistemas
+  // orientados a objetos: ATRIBUIR RESPONSABILIDADES
+  public void start() {
+    while ( ! this.zero()) this.tic();
   }
 
   // regra básica: implementar toString
@@ -37,6 +55,5 @@ public class Timer {
   public boolean greaterThan(Timer otherTimer) {
     return this.seconds > otherTimer.seconds;
   }
-
 
 }
