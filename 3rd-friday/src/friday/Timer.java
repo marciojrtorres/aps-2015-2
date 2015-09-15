@@ -3,9 +3,13 @@ package friday;
 public class Timer {
 
   private int seconds;
+  // abstrato = concreto
+  // depender de abstrações e não de implementações (concreta)
+  private Aviso aviso;
 
-  public Timer(int s) {
+  public Timer(int s, Aviso a) {
     this.seconds = s;
+    this.aviso = a;
   }
   // leitura/consulta
   public int seconds() {
@@ -20,12 +24,14 @@ public class Timer {
 
     // ação a ser feita a cada tic
     // como permitir a substituição da ação?
-    System.out.print(".");
+    aviso.aCadaTic();
 
     this.seconds--;
     // ação a ser feita quando termina o timer
     // como permitir a substituição da ação?
-    if (this.seconds == 0) System.out.println("end");
+    if (this.seconds == 0) {
+      aviso.quandoAcaba();
+    }
   }
 
   // sobrecarga de método (polimorfismo ad-hoc)

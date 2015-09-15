@@ -4,13 +4,18 @@ public class Main {
 
   public static void main(String[] args) {
 
-    // abstração / polimorfismo / mutabilidade
-    Timer t = new Timer(5); // instância de Timer
-    // as instâncias (objetos) retém estado
-    // como o objeto está? o valor de seus atributos
+    Aviso aviso = new AvisoGrafico();
+
+    Timer t = new Timer(5, aviso);
+
     System.out.println(t);
-    System.out.println(t.seconds() == 5);
+
     t.start();
+
+    Time t2 = new Time(2, new MeuAviso());
+    t2.start();
+
+    // Leitura:
 
   }
 
