@@ -1,34 +1,25 @@
 package oo;
 
-import java.io.*;
-
 public class Main {
 
-  public static void main(String[] args) throws Exception {
-    // construir uma classe que faça esse processo
-    // no main se instancia e sua esse objeto
-
-    // File unidade = new File("C:/"); // windows
-    File unidade = new File("/home");
-
-    long livre = 0L;
-    long total = 0L;
-    long usado = 0L;
-
-    while (true) { // while true é um mau cheiro
-        livre = unidade.getFreeSpace();
-        total = unidade.getTotalSpace();
-        if (total - livre != usado) {
-            usado = total - livre;
-            double gbUsado = usado / 1024.0 / 1024.0 / 1024.0;
-            // o print não pode estar nessa classe (ou o main)
-            // o comando System.out.println deve ser executado
-            // por outro objeto
-            System.out.println(usado);
-            System.out.println(gbUsado);
-        }
-        Thread.sleep(1000); // dorme um segundo
-    }
+  public static void main(String[] args) {
+	  // Padrões de Projeto (Design Patterns)
+	  // - Observer (Observador)
+	  
+	  DiskSpaceListener janela = new MostradorJanela();
+	  DiskSpaceListener console = new MostradorConsole();
+	  
+	  // os ouvintes não são obrigatório para a fonte de eventos
+	  // podem ser adicionados vários ouvintes (a qualquer instante)
+	  // os ouvintes podem ser removidos (a qualquer instante)
+	  
+	  DiskSpaceMonitor monitor = new DiskSpaceMonitor();
+	  
+	  monitor.addDiskSpaceListener(janela);
+	  monitor.addDiskSpaceListener(console);
+	  monitor.removeDiskSpaceListener(janela);
+	  
+	  monitor.monitorar();	 
+	  
   }
-
 }

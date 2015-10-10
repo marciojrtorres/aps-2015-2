@@ -11,6 +11,8 @@ import static toolkit.StringUtil.endsWith;
 public class StringUtilTest {
 
   public static void main(String[] args) {
+	System.out.println("Um teste Eclipse");  
+	
     // API: Application Programming Interface
     // tipo de retorno  Classe  método(tipo do argumento)
     String s = StringUtil.duplicate("teste");
