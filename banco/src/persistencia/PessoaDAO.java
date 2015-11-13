@@ -45,7 +45,7 @@ public class PessoaDAO implements DAO<Pessoa> {
 		try {
 			
 			String sql = "DELETE FROM pessoas "
-					   + "WHERE nome = '" + p.getNome() 
+					   + "WHERE nome = '" + p.getNome()
 					   + "' AND sobrenome = '" + p.getSobrenome() + "';";
 			
 			System.out.println(sql);

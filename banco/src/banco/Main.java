@@ -54,7 +54,11 @@ public class Main {
 		Pessoa p11 = new Pessoa("Marcos", "Oleiro");
 		
 		dao.update(p10, p11);
-		
+
+		// SQL INJECTION (Injeção de SQL)
+		// Tipo de ataque (explorar uma vulnerabilidade)
+		// que se baseia em incluir comandos sql
+		// no lugar de parâmetros
 		
 	}	
 }
